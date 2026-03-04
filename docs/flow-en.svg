@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600">
+  <!-- Background -->
+  <rect width="400" height="600" fill="#f8f9fa"/>
+  
+  <!-- Title -->
+  <text x="200" y="40" text-anchor="middle" font-size="20" font-weight="bold" fill="#333">OpenClaw Smart Memory Flow</text>
+  
+  <!-- New Task -->
+  <rect x="100" y="70" width="200" height="50" rx="8" fill="#4CAF50"/>
+  <text x="200" y="100" text-anchor="middle" font-size="16" fill="white" font-weight="bold">New Task</text>
+  
+  <!-- Arrow -->
+  <line x1="200" y1="120" x2="200" y2="150" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+  
+  <!-- TODO.md -->
+  <rect x="100" y="150" width="200" height="50" rx="8" fill="#2196F3"/>
+  <text x="200" y="175" text-anchor="middle" font-size="14" fill="white" font-weight="bold">TODO.md</text>
+  <text x="200" y="195" text-anchor="middle" font-size="12" fill="white">(Todo)</text>
+  
+  <!-- Arrow -->
+  <line x1="200" y1="200" x2="200" y2="230" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+  
+  <!-- ACTIVE_CONTEXT.md -->
+  <rect x="100" y="230" width="200" height="50" rx="8" fill="#FF9800"/>
+  <text x="200" y="255" text-anchor="middle" font-size="14" fill="white" font-weight="bold">ACTIVE_CONTEXT.md</text>
+  <text x="200" y="275" text-anchor="middle" font-size="12" fill="white">(In Progress)</text>
+  
+  <!-- Arrow -->
+  <line x1="200" y1="280" x2="200" y2="310" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+  
+  <!-- memory/ -->
+  <rect x="100" y="310" width="200" height="50" rx="8" fill="#9C27B0"/>
+  <text x="200" y="335" text-anchor="middle" font-size="14" fill="white" font-weight="bold">memory/YYYY-MM-DD.md</text>
+  <text x="200" y="355" text-anchor="middle" font-size="12" fill="white">(Details)</text>
+  
+  <!-- Fork Arrow -->
+  <line x1="200" y1="360" x2="200" y2="390" stroke="#666" stroke-width="2"/>
+  <line x1="200" y1="390" x2="150" y2="420" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="200" y1="390" x2="250" y2="420" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+  
+  <!-- Decision -->
+  <polygon points="200,420 230,440 200,460 170,440" fill="#FFC107"/>
+  <text x="200" y="445" text-anchor="middle" font-size="12" fill="#333" font-weight="bold">Valuable?</text>
+  
+  <!-- Arrow to MEMORY.md -->
+  <line x1="170" y1="440" x2="120" y2="440" stroke="#666" stroke-width="2"/>
+  <line x1="120" y1="440" x2="120" y2="480" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+  
+  <!-- MEMORY.md -->
+  <rect x="40" y="480" width="160" height="50" rx="8" fill="#F44336"/>
+  <text x="120" y="505" text-anchor="middle" font-size="14" fill="white" font-weight="bold">MEMORY.md</text>
+  <text x="120" y="525" text-anchor="middle" font-size="12" fill="white">(Long-term)</text>
+  
+  <!-- Arrow to INDEX.md -->
+  <line x1="250" y1="440" x2="280" y2="440" stroke="#666" stroke-width="2"/>
+  <line x1="280" y1="440" x2="280" y2="480" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+  
+  <!-- INDEX.md -->
+  <rect x="200" y="480" width="160" height="50" rx="8" fill="#00BCD4"/>
+  <text x="280" y="505" text-anchor="middle" font-size="14" fill="white" font-weight="bold">INDEX.md</text>
+  <text x="280" y="525" text-anchor="middle" font-size="12" fill="white">(Index·Daily 2AM)</text>
+  
+  <!-- Timeout Check -->
+  <rect x="100" y="550" width="200" height="40" rx="8" fill="#607D8B"/>
+  <text x="200" y="575" text-anchor="middle" font-size="14" fill="white" font-weight="bold">⏰ Timeout Check (Hourly)</text>
+  
+  <!-- Arrow Definition -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#666"/>
+    </marker>
+  </defs>
+</svg>
