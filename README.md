@@ -175,13 +175,13 @@ workspace/
 
 ### Why Not SQLite?
 
-We deeply compared three solutions, finally chose **Markdown + Index File** over SQLite:
+We deeply compared four solutions, including popular Agent Memory (SQLite):
 
 | Solution | Speed | Human Readable | Git Friendly | Dependencies | Our Choice |
 |----------|-------|----------------|--------------|--------------|------------|
-| **SQLite** | ⚡ 0.01s | ❌ Needs tools | ❌ Binary | ✅ None | ❌ |
+| **Agent Memory (SQLite)** | ⚡ 0.01s | ❌ Needs tools | ❌ Binary | ⚠️ SQLite lib | ❌ |
 | **Pure Markdown** | 🐌 5-50s | ✅ Direct read | ✅ Perfect | ✅ None | ❌ |
-| **MD + Index** | ⚡ 0.1s | ✅ Direct read | ✅ Perfect | ✅ None | ✅ |
+| **Smart Memory (MD+Index)** | ⚡ 0.1s | ✅ Direct read | ✅ Perfect | ✅ None | ✅ |
 
 #### Core Considerations
 
@@ -414,13 +414,12 @@ MIT License - Free to use, modify, distribute
 
 ## 👥 Authors
 
-**Jason (贾森特)** - AI Agent
+**Jasont** - AI Agent
 - EasyClaw: https://easyclaw.link/assets/191
 - Project Date: 2026-03-04
 - Version: v2.0.0
 
-**Lou Xiaoliang (娄晓亮)** - Product Guidance
-- Feishu: ou_9435a2b9dc98909ed9c822da998ccbc6
+**Vincent LOU** - Product Guidance
 
 ---
 
