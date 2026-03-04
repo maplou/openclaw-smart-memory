@@ -1,6 +1,6 @@
 # 🧠 OpenClaw Smart Memory
 
-**Three-Layer Memory Architecture for AI Agents**
+**AI Agent 三层记忆架构系统 | Three-Layer Memory Architecture for AI Agents**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.7+](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/)
@@ -8,6 +8,233 @@
 [![OpenClaw](https://img.shields.io/badge/OpenClaw-Extension-green.svg)](https://github.com/openclaw/openclaw)
 
 ---
+
+**📖 语言切换 | Language Switch**: [中文](#-为什么需要这个) | [English](#-why-you-need-this)
+
+---
+
+# 🇨🇳 中文版
+
+## 🎯 为什么需要这个？
+
+### 😰 你是否遇到过这些问题？
+
+- AI Agent Session 重启后，忘记之前做了什么？
+- 任务太多，不知道哪个优先级最高？
+- 重要经验教训没有记录，下次还踩同样的坑？
+- 记忆文件越来越多，想找某个信息找不到？
+
+### ✨ Smart Memory 帮你解决！
+
+> 🧠 **Session 会重启，文件不会丢！**  
+> ⚡ **<0.1s 检索速度**  
+> ⏰ **自动超时提醒（6h/12h/24h）**  
+> 📁 **三层架构：长期记忆 + 当前上下文 + 任务追踪**
+
+---
+
+## 🚀 快速开始
+
+### 1 分钟安装
+
+```bash
+git clone https://github.com/YOUR_USERNAME/openclaw-smart-memory.git
+cd openclaw-smart-memory
+./install.sh
+```
+
+### 立即使用
+
+```bash
+python3 scripts/generate-memory-index.py
+python3 scripts/check-timeout.py
+```
+
+---
+
+## 🧠 三层记忆架构
+
+### 1️⃣ MEMORY.md - 长期记忆
+- 📌 存储：重要决策、人物关系、经验教训
+- ✍️ 维护：手动维护，定期回顾
+- ♾️ 保留：永久保存
+
+### 2️⃣ ACTIVE_CONTEXT.md - 当前上下文
+- 📍 记录：正在做什么、进度、阻塞点
+- 🔄 恢复：Session 重启后快速恢复
+- ⏱️ 更新：实时更新
+
+### 3️⃣ TODO.md - 任务追踪
+- ✅ 待办：按优先级分类（高/中/低）
+- ✔️ 已完成：记录完成时间和结果
+- ⏰ 超时：6h→提醒 | 12h→警告 | 24h→严重
+
+---
+
+## 🔄 信息流向
+
+![信息流向图](docs/flow.svg)
+
+---
+
+## 📊 性能指标
+
+| 指标 | 目标 | 实际 |
+|------|------|------|
+| 索引大小 | <10KB | ~2KB ✅ |
+| 检索时间 | <0.5s | <0.1s ✅ |
+| 支持记忆 | 1000+ | 无上限 |
+| 超时检测 | 每小时 | 自动 ✅ |
+
+---
+
+## 🔍 索引机制详解
+
+### 为什么不用 SQLite？
+
+我们深入对比了四种方案，包括流行的 Agent Memory (SQLite)：
+
+| 方案 | 检索速度 | 人类可读 | Git 友好 | 依赖 | 我们的选择 |
+|------|----------|----------|----------|------|------------|
+| **Agent Memory (SQLite)** | ⚡ 0.01s | ❌ 需工具 | ❌ 二进制 | ⚠️ SQLite 库 | ❌ |
+| **纯 Markdown** | 🐌 5-50s | ✅ 直接读 | ✅ 完美 | ✅ 无 | ❌ |
+| **Smart Memory (MD+ 索引)** | ⚡ 0.1s | ✅ 直接读 | ✅ 完美 | ✅ 无 | ✅ |
+
+#### 核心考量
+
+1. **人类可读性优先** - Session 重启后，人类需要快速理解上下文
+2. **Git 版本控制** - Markdown 文件可以完美 diff
+3. **零依赖** - 不需要安装 SQLite 库
+4. **检索效率平衡** - 通过索引文件，检索从 O(n) 降到 O(1)
+
+---
+
+## 📁 目录结构
+
+```
+workspace/
+├── MEMORY.md                    # 长期记忆
+├── ACTIVE_CONTEXT.md            # 当前上下文
+├── TODO.md                      # 任务追踪
+├── memory/
+│   ├── INDEX.md                 # 自动索引 ⭐
+│   └── YYYY-MM-DD.md            # 每日日志
+├── scripts/
+│   ├── generate-memory-index.py # 索引生成
+│   └── check-timeout.py         # 超时检查
+└── ...
+```
+
+---
+
+## 🎯 使用场景
+
+### Session 重启后
+1. 读取 `ACTIVE_CONTEXT.md` 了解当前任务
+2. 检查 `TODO.md` 查看待办事项
+3. **1 分钟内恢复完整上下文！**
+
+### 查找历史信息
+```bash
+cat memory/INDEX.md
+grep "#lesson" memory/INDEX.md
+```
+
+### 任务超时提醒
+| 时长 | 状态 | 行动 |
+|------|------|------|
+| 6 小时 | ⏰ 提醒 | 检查是否需要帮助 |
+| 12 小时 | ⚠️ 警告 | 优先处理 |
+| 24 小时 | 🚨 严重 | 立即处理 |
+
+---
+
+## 🏷️ 标签规范
+
+| 标签 | 用途 | 示例 |
+|------|------|------|
+| #lesson | 经验教训 | 小红书封号 |
+| #safety | 安全相关 | 平台风控 |
+| #preference | 用户偏好 | 文档处理 |
+| #tech | 技术经验 | 模型选择 |
+| #task | 任务记录 | EasyClaw 注册 |
+
+---
+
+## 🔧 故障排除
+
+### 索引未更新
+```bash
+crontab -l
+python3 scripts/generate-memory-index.py
+```
+
+### 标签未提取
+检查格式：`[tags: lesson, safety]` 或 `#lesson #safety`
+
+---
+
+## 🎓 背景故事
+
+这个系统诞生于一个实际需求：AI Agent Session 会重启，如何保持记忆和上下文的连续性？
+
+**问题**：Session 重启后丢失上下文、任务超时无人察觉、记忆文件检索困难
+
+**解决方案**：三层记忆架构 + 自动索引生成 + 超时提醒机制
+
+**结果**：1 分钟恢复上下文、检索效率提升 100 倍、超时发现时间从 24h 缩短到 6h
+
+---
+
+## 🛠️ 配置选项
+
+### 自定义路径
+编辑 `scripts/generate-memory-index.py`
+
+### 定时任务
+```bash
+0 2 * * * python3 scripts/generate-memory-index.py  # 每天 2AM
+0 * * * * python3 scripts/check-timeout.py          # 每小时
+```
+
+---
+
+## 🤝 贡献
+
+欢迎提交 Issue 和 PR！
+
+```bash
+git clone https://github.com/YOUR_USERNAME/openclaw-smart-memory.git
+cd openclaw-smart-memory
+python3 tests/test_indexer.py
+```
+
+---
+
+## 👥 作者
+
+**Jasont** - AI Agent  
+**Vincent LOU** - Product Guidance
+
+---
+
+## 📄 许可证
+
+MIT License - 可自由使用、修改、分发
+
+---
+
+## 🔗 相关链接
+
+- **EasyClaw Skill**: https://easyclaw.link/assets/191
+- **GitHub**: https://github.com/maplou/openclaw-smart-memory
+- **OpenClaw**: https://github.com/openclaw/openclaw
+
+---
+
+---
+
+# 🇺🇸 English Version
 
 ## 🎯 Why You Need This?
 
@@ -32,21 +259,15 @@
 ### 1-Minute Installation
 
 ```bash
-# Clone repository
 git clone https://github.com/YOUR_USERNAME/openclaw-smart-memory.git
 cd openclaw-smart-memory
-
-# Run install script
 ./install.sh
 ```
 
-### Start Using Immediately
+### Start Using
 
 ```bash
-# Generate index
 python3 scripts/generate-memory-index.py
-
-# Check timeout
 python3 scripts/check-timeout.py
 ```
 
@@ -55,108 +276,25 @@ python3 scripts/check-timeout.py
 ## 🧠 Three-Layer Architecture
 
 ### 1️⃣ MEMORY.md - Long-term Memory
-
-- 📌 **Stores**: Important decisions, relationships, lessons learned
-- ✍️ **Maintenance**: Manual curation, regular review
-- ♾️ **Retention**: Permanent storage
-
-**Example**:
-```markdown
-## 🚫 Xiaohongshu Account Ban
-
-- **Event**: Account banned after 18 automated comments
-- **Cause**: Too frequent, detected as bot
-- **Lesson**: Safety and compliance always priority over progress
-```
-
----
+- 📌 Stores: Important decisions, relationships, lessons learned
+- ✍️ Maintenance: Manual curation, regular review
+- ♾️ Retention: Permanent storage
 
 ### 2️⃣ ACTIVE_CONTEXT.md - Current Context
-
-- 📍 **Records**: What you're doing, progress, blockers
-- 🔄 **Recovery**: Fast recovery after Session restart
-- ⏱️ **Update**: Real-time updates
-
-**Example**:
-```markdown
-## 🎯 Current Tasks
-
-### 1. EasyClaw Platform Tasks
-- **Status**: 🟡 In Progress
-- **Progress**: 2/3 Complete
-- **Blocker**: Waiting review
-```
-
----
+- 📍 Records: What you're doing, progress, blockers
+- 🔄 Recovery: Fast recovery after Session restart
+- ⏱️ Update: Real-time updates
 
 ### 3️⃣ TODO.md - Task Tracking
-
-- ✅ **Todo**: Categorized by priority (High/Medium/Low)
-- ✔️ **Done**: Record completion time and results
-- ⏰ **Timeout**: 6h→Alert | 12h→Warning | 24h→Critical
-
-**Example**:
-```markdown
-## 📋 Todo
-
-### 🔴 High Priority
-- [ ] Push Memory Index to GitHub | Source: Boss | Due:3/5 | Priority: High
-
-### ✅ Done
-- [x] EasyClaw Account Registration | Done:3/4 22:08 | Result: jason_new (ID: 236)
-```
-
----
-
-### 4️⃣ memory/YYYY-MM-DD.md - Daily Logs
-
-- 📔 **Records**: Daily work details
-- 🔍 **Indexed**: Automatically scanned by indexer
-- 📦 **Archive**: Archived after 30 days
+- ✅ Todo: Categorized by priority (High/Medium/Low)
+- ✔️ Done: Record completion time and results
+- ⏰ Timeout: 6h→Alert | 12h→Warning | 24h→Critical
 
 ---
 
 ## 🔄 Information Flow
 
-![Information Flow Diagram](docs/flow-en.svg)
-
-```
-New Task
-    ↓
-TODO.md (Todo)
-    ↓
-Start → ACTIVE_CONTEXT.md (In Progress)
-    ↓
-Done → memory/YYYY-MM-DD.md (Details)
-    ↓
-Valuable? → MEMORY.md (Long-term)
-    ↓
-Daily 2AM → INDEX.md (Index)
-    ↓
-Hourly → Timeout Check
-```
-
----
-
-## 📁 Directory Structure
-
-```
-workspace/
-├── MEMORY.md                    # Long-term Memory
-├── ACTIVE_CONTEXT.md            # Current Context
-├── TODO.md                      # Task Tracking
-├── SOUL.md                      # Identity
-├── USER.md                      # User Profile
-├── memory/
-│   ├── INDEX.md                 # Auto Index ⭐
-│   ├── README.md                # Guide
-│   └── YYYY-MM-DD.md            # Daily Logs
-├── scripts/
-│   ├── generate-memory-index.py # Index Generator
-│   └── check-timeout.py         # Timeout Checker
-├── outputs/                     # Outputs
-└── data/                        # Data Files
-```
+![Information Flow](docs/flow.svg)
 
 ---
 
@@ -185,148 +323,50 @@ We deeply compared four solutions, including popular Agent Memory (SQLite):
 
 #### Core Considerations
 
-1. **Human Readability First**
-   - After Session restart, humans need quick context understanding
-   - SQLite needs query tools, Markdown opens directly
-   - Easier debugging, auditing, version comparison
-
-2. **Git Version Control**
-   - Markdown files diff perfectly
-   - SQLite binary files can't track changes
-   - Merge conflicts easier to resolve in team collaboration
-
-3. **Zero Dependencies**
-   - No SQLite library installation needed
-   - No database drivers required
-   - Pure Python standard library + text processing
-
-4. **Performance Balance**
-   - Index file reduces retrieval from O(n) to O(1)
-   - Index stays <10KB, loads instantly
-   - Real tests: 1000 memories <0.2s, 10000 <0.5s
+1. **Human Readability First** - Quick context understanding after restart
+2. **Git Version Control** - Markdown files diff perfectly
+3. **Zero Dependencies** - No SQLite library needed
+4. **Performance Balance** - Index reduces retrieval from O(n) to O(1)
 
 ---
 
-### Index Generation Principle
+## 📁 Directory Structure
 
 ```
-Scan memory/ directory
-    ↓
-Extract from each file:
-- Title (first ## heading)
-- Date (filename YYYY-MM-DD)
-- Tags ([tags: ...] or #tag)
-    ↓
-Generate INDEX.md:
-- Core memory table
-- Recent memory table (30 days)
-- Tag index (grouped by tags)
-    ↓
-Write file (~2KB)
-    ↓
-Done! Retrieval <0.1s
+workspace/
+├── MEMORY.md                    # Long-term Memory
+├── ACTIVE_CONTEXT.md            # Current Context
+├── TODO.md                      # Task Tracking
+├── memory/
+│   ├── INDEX.md                 # Auto Index ⭐
+│   └── YYYY-MM-DD.md            # Daily Logs
+├── scripts/
+│   ├── generate-memory-index.py # Index Generator
+│   └── check-timeout.py         # Timeout Checker
+└── ...
 ```
-
-#### Performance Data
-
-| Memories | Index Size | Retrieval Time |
-|----------|------------|----------------|
-| 10 | 1KB | <0.05s |
-| 100 | 2KB | <0.1s |
-| 1000 | 5KB | <0.2s |
-| 10000 | 20KB | <0.5s |
-
----
-
-### Retrieval Flow Comparison
-
-#### Pure Markdown (No Index)
-```
-User Query → Read all files → Line-by-line search → Return results
-Time: O(n) linear growth
-1000 memories ≈ 5 seconds ❌
-```
-
-#### SQLite Solution
-```
-User Query → SQL index lookup → Return results
-Time: O(log n) logarithmic growth
-1000 memories ≈ 0.05 seconds ✅
-But: Not human readable ❌ Git unfriendly ❌
-```
-
-#### Our Solution
-```
-User Query → Read INDEX.md (2KB) → Locate target file → Read single file → Return results
-Time: O(1) constant level
-1000 memories ≈ 0.1 seconds ✅ Human readable ✅ Git friendly ✅
-```
-
----
-
-### Long-term Evolution Strategy
-
-- **Short-term (<1000)**: Current solution perfect
-- **Medium (1000-10000)**: Date-based directories + monthly indexes
-- **Long-term (>10000)**: Hybrid approach
-  - Core memories: Markdown (human readable)
-  - Historical archive: SQLite (efficient retrieval)
 
 ---
 
 ## 🎯 Use Cases
 
-### Use Case 1: After Session Restart
-
+### After Session Restart
 1. Read `ACTIVE_CONTEXT.md` for current tasks
 2. Check `TODO.md` for pending items
-3. View `memory/YYYY-MM-DD.md` for yesterday's progress
-4. **Full context recovered in <1 minute!**
+3. **Full context recovered in <1 minute!**
 
-### Use Case 2: Find Historical Info
-
+### Find Historical Info
 ```bash
-# Method 1: View Index
 cat memory/INDEX.md
-
-# Method 2: Tag Search
 grep "#lesson" memory/INDEX.md
-
-# Method 3: Semantic Search
-# Use memory_search tool
 ```
 
-### Use Case 3: Task Timeout Alert
-
+### Task Timeout Alert
 | Duration | Status | Action |
 |----------|--------|--------|
 | 6 hours | ⏰ Alert | Check if help needed |
 | 12 hours | ⚠️ Warning | Prioritize |
 | 24 hours | 🚨 Critical | Handle immediately |
-
----
-
-## 🛠️ Configuration
-
-### Custom Paths
-
-Edit `scripts/generate-memory-index.py`:
-
-```python
-MEMORY_DIR = Path('/your/workspace/memory')
-INDEX_FILE = MEMORY_DIR / 'INDEX.md'
-MEMORY_MD = Path('/your/workspace/MEMORY.md')
-```
-
-### Cron Jobs
-
-```bash
-# Daily 2AM: Generate Index
-0 2 * * * python3 scripts/generate-memory-index.py
-
-# Hourly: Check Timeout
-0 * * * * python3 scripts/check-timeout.py
-```
 
 ---
 
@@ -339,35 +379,19 @@ MEMORY_MD = Path('/your/workspace/MEMORY.md')
 | #preference | Preferences | Document processing |
 | #tech | Technical | Model selection |
 | #task | Tasks | EasyClaw registration |
-| #context | Context | In-progress tasks |
-| #todo | Todo | High priority tasks |
 
 ---
 
 ## 🔧 Troubleshooting
 
-### Problem 1: Index Not Updating
-
+### Index Not Updating
 ```bash
-# Check Cron
 crontab -l
-
-# Run Manually
 python3 scripts/generate-memory-index.py
 ```
 
-### Problem 2: Tags Not Extracted
-
-Check tag format:
-```markdown
-# ✅ Correct
-[tags: lesson, safety]
-#lesson #safety
-
-# ❌ Wrong
-[tag: lesson]  # Missing 's'
-[tags:lesson]  # Missing space
-```
+### Tags Not Extracted
+Check format: `[tags: lesson, safety]` or `#lesson #safety`
 
 ---
 
@@ -375,28 +399,30 @@ Check tag format:
 
 This system was born from a real need: AI Agent Sessions restart, how to maintain memory and context continuity?
 
-#### Problems
-- Context lost after Session restart
-- Task timeouts go unnoticed
-- Memory files growing, retrieval difficult
+**Problems**: Context lost, timeouts unnoticed, retrieval difficult
 
-#### Solutions
-- Three-layer architecture: Long-term + Context + Tasks
-- Auto index generation: <0.1s retrieval
-- Timeout alert mechanism: 6h/12h/24h levels
+**Solutions**: Three-layer architecture + Auto index + Timeout alerts
 
-#### Results
-- Context recovered in 1 minute after restart
-- Retrieval efficiency improved 100x
-- Timeout detection time reduced from 24h to 6h
+**Results**: 1-minute recovery, 100x faster retrieval, timeout detection from 24h to 6h
+
+---
+
+## 🛠️ Configuration
+
+### Custom Paths
+Edit `scripts/generate-memory-index.py`
+
+### Cron Jobs
+```bash
+0 2 * * * python3 scripts/generate-memory-index.py  # Daily 2AM
+0 * * * * python3 scripts/check-timeout.py          # Hourly
+```
 
 ---
 
 ## 🤝 Contributing
 
 Issues and PRs welcome!
-
-### Development Setup
 
 ```bash
 git clone https://github.com/YOUR_USERNAME/openclaw-smart-memory.git
@@ -406,59 +432,25 @@ python3 tests/test_indexer.py
 
 ---
 
+## 👥 Authors
+
+**Jasont** - AI Agent  
+**Vincent LOU** - Product Guidance
+
+---
+
 ## 📄 License
 
 MIT License - Free to use, modify, distribute
 
 ---
 
-## 👥 Authors
-
-**Jasont** - AI Agent
-- EasyClaw: https://easyclaw.link/assets/191
-- Project Date: 2026-03-04
-- Version: v2.0.0
-
-**Vincent LOU** - Product Guidance
-
----
-
-## 🎯 Related Links
+## 🔗 Related Links
 
 - **EasyClaw Skill**: https://easyclaw.link/assets/191
+- **GitHub**: https://github.com/maplou/openclaw-smart-memory
 - **OpenClaw**: https://github.com/openclaw/openclaw
-- **Clawhub**: https://clawhub.com
-- **OpenClaw Docs**: https://docs.openclaw.ai
 
 ---
 
-## 💬 Testimonials
-
-> "1 minute to recover context after restart, amazing!"
->
-> — OpenClaw User
-
-> "Timeout alerts save me so much trouble, never forget tasks!"
->
-> — AI Agent Developer
-
----
-
-## 🚀 Get Started Now
-
-```bash
-# Clone
-git clone https://github.com/YOUR_USERNAME/openclaw-smart-memory.git
-
-# Install
-cd openclaw-smart-memory && ./install.sh
-
-# Start Recording
-vim memory/$(date +%Y-%m-%d).md
-```
-
----
-
-*Let AI Remember and Work Like Humans!*
-
-**🧠 Session Restarts, Files Persist!**
+*🧠 Session Restarts, Files Persist!*
