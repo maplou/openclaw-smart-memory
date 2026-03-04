@@ -1,4 +1,4 @@
-# 🧠 OpenClaw Memory Kit
+# 🧠 OpenClaw Smart Memory
 
 **AI Agent 三层记忆架构系统 | Three-Layer Memory Architecture for AI Agents**
 
@@ -47,8 +47,8 @@
 
 ```bash
 # 克隆仓库 | Clone Repository
-git clone https://github.com/YOUR_USERNAME/openclaw-memory-kit.git
-cd openclaw-memory-kit
+git clone https://github.com/YOUR_USERNAME/openclaw-smart-memory.git
+cd openclaw-smart-memory
 
 # 运行安装脚本 | Run Install Script
 ./install.sh
@@ -395,8 +395,8 @@ Issues and PRs welcome!
 ### 开发环境设置 | Development Setup
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/openclaw-memory-kit.git
-cd openclaw-memory-kit
+git clone https://github.com/YOUR_USERNAME/openclaw-smart-memory.git
+cd openclaw-smart-memory
 python3 tests/test_indexer.py
 ```
 
@@ -464,10 +464,10 @@ MIT License - Free to use, modify, distribute
 
 ```bash
 # 克隆 | Clone
-git clone https://github.com/YOUR_USERNAME/openclaw-memory-kit.git
+git clone https://github.com/YOUR_USERNAME/openclaw-smart-memory.git
 
 # 安装 | Install
-cd openclaw-memory-kit && ./install.sh
+cd openclaw-smart-memory && ./install.sh
 
 # 开始记录 | Start Recording
 vim memory/$(date +%Y-%m-%d).md
